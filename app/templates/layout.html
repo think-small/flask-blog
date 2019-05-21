@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        {% if title %}
+        <title>{{ title }}</title>
+        {% else %}
+        <title>DS Blog</title>
+        {% endif %}
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://fonts.googleapis.com/css?family=Exo+2&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    </head>
+    <body class="bg-dark">
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+            <nav class="navbar bg-dark">
+                <h2><a href="#"><i class="fas fa-calculator"></i> studentDS</a></h2>
+                <ul>
+                    <li><a href="#">Archives</a></li>
+                    <li><a href="#">About</a></li>
+                    {% if current_user.is_authenticated %}
+                        <li><a href={{ url_for("account") }}>{{ current_user.username }}</a></li>
+                        <li><a href={{ url_for("logout") }}>Log Out</a></li>
+                    {% else %}
+                        <li><a href={{  url_for("register") }}>Sign Up/</a><a href={{ url_for("login") }}>Log In</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+            <div class="container">
+                <section class="content">
+                    {% with messages=get_flashed_messages(with_categories=true) %}
+                        {% if messages %}
+                            {% for category, message in messages %}
+                                <div class="alert alert-{{ category }}">
+                                    <span>{{ message }}</span>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}                    
+                    {% block content %}{% endblock %}
+                </section>
+                <section class="sidebar">
+                    <h4>Sidebar goes here</h4>
+                </section>
+            </div>
+    </body>
+</html>

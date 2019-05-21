@@ -1,0 +1,49 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class="form bg-primary">
+        <form method="POST" action="">
+                {{  form.hidden_tag() }}
+            <fieldset>
+                <legend class="text-accent text-large">Log In</legend>
+                <div>
+                    {{ form.email.label(class="form-label") }}:
+                    {% if form.email.errors %}
+                        {{ form.email(class="form-group is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.email.errors %}
+                                <div>{{ error }}</div>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.email(class="form-group") }}
+                    {%  endif %}
+                </div>
+                <div>
+                    {{ form.password.label(class="form-label") }}:
+                    {% if form.password.errors %}
+                        {{ form.password(class="form-group is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.password.errors %}
+                                <div>{{ error }}</div>
+                            {% endfor %}
+                        </div>                        
+                    {% else %}
+                        {{ form.password(class="form-group") }}
+                    {% endif %}                    
+                </div>
+            </fieldset>
+            <div class="mt-1">
+                {{ form.remember }} <small>{{ form.remember.label }}</small>
+            </div>            
+            <div class="form-submit mt-1">
+                {{ form.submit(class="btn btn-accent") }}
+            </div>
+            <div class="mt-1">
+                <small>
+                    Forgot password? <a href="#">Reset</a>
+                </small>
+            </div>                                 
+        </form>
+    </div>
+{% endblock content %}
