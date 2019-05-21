@@ -1,0 +1,180 @@
+//  Background colors
+.bg {
+    &-dark {
+        @include set-background-color($dark-color);
+    }
+    &-primary {
+        @include set-background-color($primary-color);
+    }
+    &-success {
+        @include set-background-color($success-color);
+    }
+    &-danger {
+        @include set-background-color($danger-color);
+    }
+}
+
+//  Text color and size
+.text {
+    &-primary {
+        color: $primary-color;
+    }
+    &-accent {
+        color: $accent-color;
+    }
+    &-dark {
+        color: $dark-color;
+    }
+    &-success {
+        color: $success-color;
+    }
+    &-danger {
+        color: $danger-color;
+    }
+    &-xlarge {
+        font-size: 3rem;
+    }
+    &-large {
+        font-size: 2rem;
+    }
+    &-small {
+        font-size: 0.5rem;
+    }
+}
+
+//  Form formatting
+.form {
+    width: 50%;
+    margin: 5% auto;
+    padding: 2rem;
+
+    &-group {
+        line-height: 1.5rem;
+        margin-top: 1rem;
+        width: 60%;
+        font-size: 16px;
+    }
+
+    fieldset {
+        border: 0;
+    }
+}
+
+//  Buttons
+.btn {
+    padding: 0.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    border: 0;
+    outline: 0;
+    transition: all 0.15s ease-in;
+
+    &.btn-primary {
+        @include set-background-color($primary-color);
+        &:hover {
+            background-color: darken($primary-color, 20%);
+            color: #fff;
+        }
+    }
+    &.btn-dark {
+        @include set-background-color($dark-color);
+        &:hover {
+            background-color: darken($dark-color, 20%);
+            color: #fff;
+        }
+    }
+    &.btn-accent {
+        @include set-background-color($accent-color);
+        &:hover {
+            background-color: darken($accent-color, 20%);
+            color: #fff;
+        }
+    }
+    &.btn-danger {
+        @include set-background-color($danger-color);
+        &:hover {
+            background-color: darken($danger-color, 20%);
+        }
+    }
+}
+
+//  Alert formatting
+.alert {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    max-width: 50%;
+    max-height: 10%;
+    min-height: 5%;    
+    margin: 2rem auto;
+    padding: 1rem;
+    &-success {
+        @include set-background-color($success-color);
+    }
+    &-danger {
+        @include set-background-color($danger-color);
+    }
+}
+
+//  Formatting for each post on index page
+article {
+
+    a {
+        text-decoration: none;
+    }
+
+    .metadata {
+        font-size: 12px;
+    }
+}
+
+//  Margins for left, right, top, bottom
+@for $i from 1 through 5 {
+    .ml-#{$i} {
+        margin-left: #{$i}rem;
+    }
+}
+
+@for $i from 1 through 5 {
+    .mr-#{$i} {
+        margin-right: #{$i}rem;
+    }
+}
+
+@for $i from 1 through 5 {
+    .mt-#{$i} {
+        margin-top: #{$i}rem;
+    }
+}
+
+@for $i from 1 through 5 {
+    .mb-#{$i} {
+        margin-bottom: #{$i}rem;
+    }
+}
+
+//  Paddings for left, right, top, bottom
+@for $i from 1 through 5 {
+    .pl-#{$i} {
+        padding-left: #{$i}rem;
+    }
+}
+
+@for $i from 1 through 5 {
+    .pr-#{$i} {
+        padding-right: #{$i}rem;
+    }
+}
+
+@for $i from 1 through 5 {
+    .pt-#{$i} {
+        padding-top: #{$i}rem;
+    }
+}
+
+@for $i from 1 through 5 {
+    .pb-#{$i} {
+        padding-bottom: #{$i}rem;
+    }
+}
